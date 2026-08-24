@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "dualmacromod",
+  "version": "${version}",
+  "name": "Dual Macro Mod",
+  "description": "Custom client-side macros for Bow Cart and XBOW Cart combos.",
+  "authors": [
+    "User"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.dualmacro.mod.DualMacroClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
