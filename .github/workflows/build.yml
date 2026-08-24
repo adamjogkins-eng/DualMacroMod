@@ -17,9 +17,11 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
+        with:
+          cache-disabled: true
 
       - name: Build with Gradle
-        run: gradle build
+        run: gradle build --stacktrace
 
       - name: Upload Artifact (.jar)
         uses: actions/upload-artifact@v4
