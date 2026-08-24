@@ -1,17 +1,18 @@
 package com.dualmacro.mod;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyBindingHelper;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import org.lwjgl.glfw.GLFW;
 
 public class DualMacroClient implements ClientModInitializer {
     private static KeyMapping zKeyBinding;
@@ -27,13 +28,15 @@ public class DualMacroClient implements ClientModInitializer {
     public void onInitializeClient() {
         zKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                 "key.dualmacro.bowcart",
-                GLFW.GLFW_KEY_Z,
+                InputConstants.Type.KEYSYM,
+                InputConstants.KEY_Z,
                 "category.dualmacro.binds"
         ));
 
         xKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                 "key.dualmacro.xbowcart",
-                GLFW.GLFW_KEY_X,
+                InputConstants.Type.KEYSYM,
+                InputConstants.KEY_X,
                 "category.dualmacro.binds"
         ));
 
@@ -110,9 +113,9 @@ public class DualMacroClient implements ClientModInitializer {
         }
     }
 
-    private void switchToItem(Inventory inv, net.minecraft.world.item.Item... targetItems) {
+    private void switchToItem(Inventory inv, Item... targetItems) {
         for (int i = 0; i < 9; i++) {
-            for (net.minecraft.world.item.Item target : targetItems) {
+            for (Item target : targetItems) {
                 if (inv.getItem(i).is(target)) {
                     inv.selected = i;
                     return;
